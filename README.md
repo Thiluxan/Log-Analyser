@@ -2,7 +2,7 @@
 Software Construction Assignment 2 - Simple Log Analyser Application
 Thiluxan
 Elankumaran
-Mohanateesan
+Mohanatheesan
 Sachchithananthan
 Sajeesan
 Jeyanthiran
