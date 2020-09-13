@@ -20,9 +20,8 @@ public class LogOperation {
             logLine = scanner.nextLine();
             if(fileExist.isFileExists(outputPath)){
                 if(logLine.contains("ERROR")){
-                    System.out.println("error found");
                     fileWrite.writeFile(logLine.split(" ")[0],outputPath);
-                    //mailSending.sendMail(mailConfiguration,emailList);
+                    mailSending.sendMail(mailConfiguration,emailList);
                     break;
                 }
                 else {
@@ -32,9 +31,8 @@ public class LogOperation {
             else{
                 if(flag==1){
                     if(logLine.contains("ERROR")){
-                        System.out.println("error found");
                         fileWrite.writeFile(logLine.split(" ")[0],outputPath);
-                        //mailSending.sendMail(mailConfiguration,emailList);
+                        mailSending.sendMail(mailConfiguration,emailList);
                         break;
                     }
                     else{
