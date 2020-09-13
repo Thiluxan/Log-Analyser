@@ -7,7 +7,7 @@ import java.util.List;
 public class EmailRepository {
     public List<String> getEmails() {
 
-        List<String> emailList = null;
+        List<String> emailList = new ArrayList<>();
 
         try {
             DatabaseConnection databaseConnection = new DatabaseConnection();
