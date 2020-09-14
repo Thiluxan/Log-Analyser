@@ -7,7 +7,7 @@ public class CommandLineInput implements Input{
     public String getInput(){
         System.out.println("Enter Log file path");
         Scanner scanner = new Scanner(System.in);
-        String path = scanner.next();
+        String path = scanner.nextLine();
         return path;
     }
 }

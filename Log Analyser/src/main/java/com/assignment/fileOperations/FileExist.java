@@ -4,7 +4,13 @@ import java.io.File;
 
 public class FileExist {
     public boolean isFileExists(String path){
-        File file = new File(path);
-        return (file.length() == 0);
+        try{
+            File file = new File(path);
+            return (file.length() == 0);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
     }
 }

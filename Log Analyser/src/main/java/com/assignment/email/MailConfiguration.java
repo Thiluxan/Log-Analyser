@@ -12,8 +12,8 @@ public class MailConfiguration
     public void configureMail(String recepient)
     {
         String host="smtp.mailgun.org";
-        final String user="";//change accordingly
-        final String password="";//change accordingly
+        final String user="postmaster@sandboxc97de748c4294f6385405105597bdf3b.mailgun.org";//change accordingly
+        final String password="dcc5fb38ee68a631ab9d2400463f90a8-0f472795-922ac3b3";//change accordingly
 
         String to=recepient;//change accordingly
 
@@ -40,7 +40,7 @@ public class MailConfiguration
             //send the message
             Transport.send(message);
 
-            System.out.println("message sent successfully...");
+            //System.out.println("message sent successfully...");
 
         } catch (MessagingException e) {e.printStackTrace();}
     }

@@ -36,7 +36,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.21</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
         <dependency>
             <groupId>javax.mail</groupId>
@@ -51,5 +50,5 @@
         </dependency>
 
     </dependencies>
-
+    
 </project>

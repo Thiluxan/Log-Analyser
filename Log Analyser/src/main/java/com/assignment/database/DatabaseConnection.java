@@ -7,11 +7,11 @@ import java.sql.SQLException;
 public class DatabaseConnection {
     public Connection connectDatabase() {
         try{
-            String url="jdbc:mysql://localhost:3306/sample_database";
+            String url="jdbc:mysql://localhost:3306/sample_database?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             String username="root";
             String password="";
 
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(url,username,password);
 
             return con;
