@@ -6,7 +6,8 @@ public class FileExist {
     public boolean isFileExists(String path){
         try{
             File file = new File(path);
-            return (file.length() == 0);
+            //returns true if file contains any data
+            return (file.length() != 0);
         }
         catch (Exception e){
             e.printStackTrace();
