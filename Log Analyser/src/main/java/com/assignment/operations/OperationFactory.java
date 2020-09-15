@@ -1,12 +1,9 @@
 package com.assignment.operations;
 
-import com.assignment.fileOperations.FileExist;
-
 public class OperationFactory {
-    public Operation getInstance(FileExist fileExist){
+    public Operation getInstance(boolean result){
         Operation operation = null;
-        String outputPath = "E:\\Java\\Log Analyser\\src\\main\\resources\\output.txt";
-        if(fileExist.isFileExists(outputPath)){
+        if(result){
             operation = new FileExistOperation();
         }
         else {
