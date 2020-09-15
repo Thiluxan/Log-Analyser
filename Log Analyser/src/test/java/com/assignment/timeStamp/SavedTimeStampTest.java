@@ -14,7 +14,7 @@ public class SavedTimeStampTest {
         File file = new File(path);
         boolean expected = true;
 
-        //case 1 -->file exist
+        //case 1 --> file exist
         //use exists() Function to check whether the return value is true
         assertTrue(file.exists());
     }
@@ -25,7 +25,7 @@ public class SavedTimeStampTest {
         File file = new File(path);
         boolean expected = true;
 
-        //case 1 -->file exist
+        //case 2 --> file does not exist
         //use exists() Function to check whether the return value is false
         assertFalse(file.exists());
     }
