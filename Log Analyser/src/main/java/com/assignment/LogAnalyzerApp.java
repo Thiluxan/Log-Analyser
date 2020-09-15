@@ -60,7 +60,9 @@ public class LogAnalyzerApp {
 
         Scanner scanner1 = fileRead.readFile(path);
 
-        Operation operation = operationFactory.getInstance(fileExist);
+        boolean isFileExists = fileExist.isFileExists("\"E:\\\\Java\\\\Log Analyser\\\\src\\\\main\\\\resources\\\\output.txt\"");
+
+        Operation operation = operationFactory.getInstance(isFileExists);
 
         operation.performOperation(fileWrite,scanner1,savedTimeStamp,mailConfiguration,mailSending,emailList,timeStampList);
 
