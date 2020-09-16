@@ -32,16 +32,18 @@ public class SavedTimeStampTest {
 
     @Test
     public void should_return_current_timeStamp() throws IOException {
+        String outputPath = "C:/Users/User/Desktop/Log Analyser/src/main/resources/output.txt";
         SavedTimeStamp savedTimeStamp = new SavedTimeStamp();
-        String timeStamp = savedTimeStamp.getTimeStamp();
+        String timeStamp = savedTimeStamp.getTimeStamp(outputPath);
         String expected = "2020-09-06T17:25:20Z";
         assertEquals(expected,timeStamp);
     }
 
     @Test
     public void should_return_empty_timeStamp() throws IOException {
+        String outputPath = "C:/Users/User/Desktop/Log Analyser/src/main/resources/output.txt";
         SavedTimeStamp savedTimeStamp = new SavedTimeStamp();
-        String timeStamp = savedTimeStamp.getTimeStamp();
+        String timeStamp = savedTimeStamp.getTimeStamp(outputPath);
         String expected = "";
         assertEquals(expected,timeStamp);
     }
