@@ -1,30 +1,27 @@
 package com.assignment.operations;
 
-import com.assignment.email.MailConfiguration;
-import com.assignment.email.MailSending;
-import com.assignment.fileOperations.FileWrite;
-import com.assignment.timeStamp.SavedTimeStamp;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+//Check for ERROR in log file, if it is read already and an ERROR is recorded in output text file
 public class FileExistOperation implements Operation {
     @Override
-    public void performOperation(FileWrite fileWrite, Scanner scanner, SavedTimeStamp savedTimeStamp,
-                                 MailConfiguration mailConfiguration, MailSending mailSending, List<String> emailList,
+    public String performOperation(Scanner scanner, String errorTimeStamp,
                                  List<String> timeStampList) throws IOException {
 
         String logLine;
         int flag = 0;
         int index;
-        String outputPath = "E:\\Java\\Log Analyser\\src\\main\\resources\\output.txt";
-
         while (scanner.hasNextLine()){
             logLine = scanner.nextLine();
             if(flag==1){
                 if(logLine.contains("ERROR")){
+
+                    //Getting the timeStamp of the line where ERROR found
                     index = timeStampList.indexOf(logLine.split(" ")[0]);
+
+                    //Logic for finding the next timeStamp if a timeStamp found with error
                     for(int i=index+1; i<timeStampList.size(); i++){
                         if(timeStampList.get(i).equals(timeStampList.get(index))){
                             continue;
@@ -34,15 +31,18 @@ public class FileExistOperation implements Operation {
                             break;
                         }
                     }
-                    fileWrite.writeFile(timeStampList.get(index),outputPath);
-                    //mailSending.sendMail(mailConfiguration,emailList);
-                    break;
+
+                    //Returning the timeStamp to be saved in the output text file
+                    String output = timeStampList.get(index);
+                    return output;
                 }
             }
 
-            if(logLine.split(" ")[0].equals(savedTimeStamp.getTimeStamp())){
+            //Seeking for already recorded timeStamp in the output text file
+            if(logLine.split(" ")[0].equals(errorTimeStamp)){
                 flag = 1;
             }
         }
+        return "";
     }
 }

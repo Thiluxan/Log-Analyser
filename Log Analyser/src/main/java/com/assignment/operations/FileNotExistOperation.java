@@ -1,25 +1,22 @@
 package com.assignment.operations;
 
-        import com.assignment.email.MailConfiguration;
-        import com.assignment.email.MailSending;
-        import com.assignment.fileOperations.FileWrite;
-        import com.assignment.timeStamp.SavedTimeStamp;
+import java.util.List;
+import java.util.Scanner;
 
-        import java.util.List;
-        import java.util.Scanner;
-
+//Check for ERROR in log file, if it is read for first time in the application
 public class FileNotExistOperation implements Operation{
     @Override
-    public void performOperation(FileWrite fileWrite, Scanner scanner, SavedTimeStamp savedTimeStamp,
-                                 MailConfiguration mailConfiguration, MailSending mailSending, List<String> emailList,
-                                 List<String> timeStampList) {
+    public String performOperation(Scanner scanner, String errorTimeStamp, List<String> timeStampList) {
         String logLine;
         int index;
-        String outputPath = "E:\\Java\\Log Analyser\\src\\main\\resources\\output.txt";
         while (scanner.hasNextLine()){
             logLine = scanner.nextLine();
             if(logLine.contains("ERROR")){
+
+                //Getting the timeStamp of the line where ERROR found
                 index = timeStampList.indexOf(logLine.split(" ")[0]);
+
+                //Logic for finding the next timeStamp if a timeStamp found with error
                 for(int i=index+1; i<timeStampList.size(); i++){
                     if(timeStampList.get(i).equals(timeStampList.get(index))){
                         continue;
@@ -29,12 +26,13 @@ public class FileNotExistOperation implements Operation{
                         break;
                     }
                 }
-                fileWrite.writeFile(timeStampList.get(index),outputPath);
-                //mailSending.sendMail(mailConfiguration,emailList);
-                break;
+
+                //Returning the timeStamp to be saved in the output text file
+                String output = timeStampList.get(index);
+                return output;
             }
         }
-
+        return "";
     }
 }
 
