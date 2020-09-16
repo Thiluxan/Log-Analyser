@@ -1,20 +1,17 @@
 package com.assignment.timeStamp;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class SavedTimeStamp {
-    public String getTimeStamp(String path) throws IOException {
-        FileInputStream file = new FileInputStream(path);
-        File fp = new File(path);
-        if(!(fp.length()==0)){
-            Scanner sc = new Scanner(file);
-            return sc.next();
+    public String getTimeStamp(boolean result, Scanner scanner) throws IOException {
+        //This will return the saved timeStamp in the output text file
+        if(result){
+            return scanner.next();
         }
         else{
             return "";
         }
     }
 }
+
