@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TimeStampRepository {
-    public List<String> getTimeStamp(Scanner scanner)  {
+    public List<String> getTimeStamp(Scanner scanner) implements LogRepository {
         List<String> timeStampList = new ArrayList<>();
         String timeStamp;
 
