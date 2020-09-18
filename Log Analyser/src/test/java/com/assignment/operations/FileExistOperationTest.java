@@ -16,7 +16,7 @@ public class FileExistOperationTest {
 
     @Test
     public void should_return_errorTimeStamp_as_error_found() throws IOException {
-        String path = "E:\\Java\\Log Analyser\\src\\main\\resources\\example2.log";
+        String path = "C:/Users/User/Desktop/Log Analyser/src/main/resources/example.log";
         FileRead fileRead = new FileRead();
         Scanner scanner = fileRead.readFile(path);
 
@@ -35,7 +35,7 @@ public class FileExistOperationTest {
 
     @Test
     public void should_not_return_errorTimeStamp_as_no_error_found() throws IOException {
-        String path = "E:\\Java\\Log Analyser\\src\\main\\resources\\example.log";
+        String path = "C:/Users/User/Desktop/Log Analyser/src/main/resources/example.log";
         FileRead fileRead = new FileRead();
         Scanner scanner = fileRead.readFile(path);
 
