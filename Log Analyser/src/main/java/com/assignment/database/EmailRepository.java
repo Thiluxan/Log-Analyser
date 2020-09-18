@@ -5,8 +5,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmailRepository {
-    public List<String> getEmails() {
+public class EmailRepository implements DataRepository {
+    public List<String> getData() {
 
         List<String> emailList = new ArrayList<>();
 
