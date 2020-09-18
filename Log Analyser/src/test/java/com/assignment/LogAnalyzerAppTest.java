@@ -21,31 +21,31 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class LogAnalyzerAppTest {
-    OperationFactory operationFactory = new OperationFactory();
-
-    FileExist fileExist = new FileExist();
-    FileRead fileRead  = new FileRead();
-    FileWrite fileWrite = new FileWrite();
-    DatabaseConnection databaseConnection = new DatabaseConnection();
-    EmailRepository emailRepository = new EmailRepository();
-    MailConfiguration mailConfiguration = new MailConfiguration();
-    MailSending mailSending = new MailSending();
-    Input input = mock(Input.class);
-    SavedTimeStamp savedTimeStamp = new SavedTimeStamp();
-    TimeStampRepository timeStampRepository = new TimeStampRepository();
-
-    LogAnalyzerApp app = new LogAnalyzerApp(fileRead,fileWrite,fileExist,databaseConnection,emailRepository,mailConfiguration,
-            input,operationFactory,savedTimeStamp,mailSending,timeStampRepository);
-
     @Test
-    public void should_return_scanner_object() throws IOException, NullPointerException {
+    public void should_return_emailList() throws IOException {
+        OperationFactory operationFactory = new OperationFactory();
+        FileExist fileExist = new FileExist();
+        FileRead fileRead  = new FileRead();
+        FileWrite fileWrite = new FileWrite();
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        MailConfiguration mailConfiguration = new MailConfiguration();
+        DataRepository dataRepository = mock(DataRepository.class);
+        MailSending mailSending = new MailSending();
+        Input input = mock(Input.class);
+        SavedTimeStamp savedTimeStamp = new SavedTimeStamp();
+        TimeStampRepository timeStampRepository = new TimeStampRepository();
 
-        app.execute();
+        List<String> emailList = new ArrayList<>();
+        emailList.add("luxanmani@gmail.com");
+        emailList.add("tthilux@ymail.com");
+        when(dataRepository.getData()).thenReturn(emailList);
 
-        String path = "C:/Users/User/Desktop/Log Analyser/src/main/resources/example.log";
+        when(input.getInput()).thenReturn("C:/Users/User/Desktop/Log Analyser/src/main/resources/example.log");
 
-        verify(fileRead).readFile(path);
-
+        LogAnalyzerApp logAnalyzerApp = new LogAnalyzerApp(fileRead,fileWrite,fileExist,databaseConnection,
+                dataRepository,mailConfiguration,input,operationFactory, savedTimeStamp, mailSending, timeStampRepository);
+        logAnalyzerApp.execute();
+        verify(dataRepository).getData();
     }
 
 }
